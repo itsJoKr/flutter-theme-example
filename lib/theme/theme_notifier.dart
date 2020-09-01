@@ -13,7 +13,7 @@ class ThemeNotifier extends ChangeNotifier {
   String name;
   String iconAsset;
 
-  void change(Color primary, Color accent, Brightness brightness, String name, String iconAsset) {
+  void changeTheme(Color primary, Color accent, Brightness brightness, String name, String iconAsset) {
     this.primary = primary;
     this.accent = accent;
     this.brightness = brightness;

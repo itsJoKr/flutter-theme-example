@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class ListScreen extends StatelessWidget {
+  
   static Route<dynamic> route() {
     return MaterialPageRoute<dynamic>(builder: (BuildContext context) => ListScreen());
   }
@@ -13,14 +14,15 @@ class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Provider.of<ThemeNotifier>(context);
-    var baseBackground = (theme.brightness == Brightness.light) ? Colors.white : Colors.grey.shade900;
-    var btnBack = (theme.brightness == Brightness.light) ? Colors.white : Colors.grey.shade700;
+    var baseBackgroundColor = (theme.brightness == Brightness.light) ? Colors.white : Colors.grey.shade900;
+    var buttonBackgroundColor = (theme.brightness == Brightness.light) ? Colors.white : Colors.grey.shade700;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.info_outline),
         onPressed: () {},
       ),
-      backgroundColor: Color.alphaBlend(Theme.of(context).primaryColor.withOpacity(0.05), baseBackground),
+      backgroundColor: Color.alphaBlend(Theme.of(context).primaryColor.withOpacity(0.05), baseBackgroundColor),
       appBar: AppBar(title: Text(theme.name)),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 50),
@@ -29,30 +31,30 @@ class ListScreen extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color.alphaBlend(Theme.of(context).primaryColor.withOpacity(0.35), baseBackground)),
+                color: Color.alphaBlend(Theme.of(context).primaryColor.withOpacity(0.35), baseBackgroundColor)),
             child: ThemeSvgPicture(asset: 'assets/svg/branch.svg'),
           ),
           SizedBox(height: 40),
           MaterialButton(
-            color: btnBack,
+            color: buttonBackgroundColor,
             onPressed: () {
-              theme.change(Color(0xff034694), Colors.white, Brightness.light, 'Chelsea F.C.', null);
+              theme.changeTheme(Color(0xff034694), Colors.white, Brightness.light, 'Chelsea F.C.', null);
             },
             child: Text('Chelsea F.C.'),
           ),
           SizedBox(height: 16),
           MaterialButton(
-            color: btnBack,
+            color: buttonBackgroundColor,
             onPressed: () {
-              theme.change(Color(0xffef0107), Color(0xff023474), Brightness.light, 'Arsenal F.C', null);
+              theme.changeTheme(Color(0xffef0107), Color(0xff023474), Brightness.light, 'Arsenal F.C', null);
             },
             child: Text('Arsenal F.C'),
           ),
           SizedBox(height: 16),
           MaterialButton(
-            color: btnBack,
+            color: buttonBackgroundColor,
             onPressed: () {
-              theme.change(Color(0xff7f0000), Color(0xff2dafe5), Brightness.dark, 'West Ham United F.C.', null);
+              theme.changeTheme(Color(0xff7f0000), Color(0xff2dafe5), Brightness.dark, 'West Ham United F.C.', null);
             },
             child: Text('West Ham United F.C.'),
           ),
